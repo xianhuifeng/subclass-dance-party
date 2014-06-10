@@ -57,3 +57,39 @@ body, a:link, a:visited, a:active{
   height: 55px;
   width: 180px;
 }
+
+.luigi1{
+    border: 1px solid green;
+  position:absolute;
+
+  background-image:url('img/luigi1.png');
+  background-repeat:no-repeat;
+
+  height: 100px;
+  width: 60px;
+
+}
+
+.luigi2{
+    border: 1px solid green;
+  position:absolute;
+
+  background-image:url('img/luigi2.png');
+  background-repeat:no-repeat;
+
+  height: 100px;
+  width: 60px;
+
+}
+
+.luigi3{
+    border: 1px solid green;
+  position:absolute;
+
+  background-image:url('img/luigi3.png');
+  background-repeat:no-repeat;
+
+  height: 100px;
+  width: 60px;
+
+}

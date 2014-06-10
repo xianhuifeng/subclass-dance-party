@@ -8,11 +8,9 @@ MakeTextDancer.prototype = Object.create(MakeDancer.prototype);
 MakeTextDancer.prototype.constructor = MakeTextDancer;
 MakeTextDancer.prototype._oldStep = MakeDancer.prototype.step;
 MakeTextDancer.prototype.step = function(){
-
   this._oldStep();
-  this.$node.fadeIn();
-  this.$node.fadeOut();
-
+  this.$node.fadeIn('slow');
+  this.$node.fadeOut('slow');
 };
 
 
