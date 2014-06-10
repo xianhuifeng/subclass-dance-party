@@ -21,7 +21,30 @@ body, a:link, a:visited, a:active{
   background-color: #777;
 }
 .dancer{
-  border:10px solid red;
-  border-radius:10px;
+  border:1px solid red;
+  border-radius:30px;
   position:absolute;
+}
+.marioFace{
+  position: absolute;
+
+  background-image:url('img/MarioFace.png');
+  background-repeat:no-repeat;
+
+  height: 60px;
+  width: 39px;
+}
+.marioBack{
+  position:absolute;
+
+  background-image:url('img/MarioBack.png');
+  background-repeat:no-repeat;
+
+  height: 60px;
+  width: 39px;
+}
+.background{
+  width:100%;
+  height:100%;
+
 }
