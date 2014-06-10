@@ -48,3 +48,12 @@ body, a:link, a:visited, a:active{
   height:100%;
 
 }
+
+.text{
+  border: 1px solid green;
+  position: absolute;
+  background-image:url('img/Mario.png');
+  background-repeat:no-repeat;
+  height: 55px;
+  width: 180px;
+}

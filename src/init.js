@@ -2,7 +2,7 @@ $(document).ready(function(){
   window.dancers = [];
 
   $(".addDancerButton").on("click", function(event){
-    /* This function sets up the click handlers for the create-dancer
+    /* This function sets up `the click handlers for the create-dancer
      * buttons on index.html. You should only need to make one small change to it.
      * As long as the "data-dancer-maker-function-name" attribute of a
      * class="addDancerButton" DOM node matches one of the names of the
@@ -27,7 +27,23 @@ $(document).ready(function(){
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+    window.dancers.push(dancer);
+
     $('body').append(dancer.$node);
+
+
+  });
+  var each = function(array, callback){
+    for (var i =0; i<array.length; i++){
+      callback(array[i]);
+    }
+  }
+  $(".alignSprites").on("click", function(event){
+    each(window.dancers, function(dancer){
+      dancer.inline();
+    });
   });
 });
+
+
 
