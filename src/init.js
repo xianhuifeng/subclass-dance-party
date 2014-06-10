@@ -1,5 +1,9 @@
 $(document).ready(function(){
-  window.dancers = [];
+  window.counter= 1;
+  window.dancers = {};
+  window.marioDancers = {};
+  window.luigiDancers = {};
+  window.textDancers = {};
 
   $(".addDancerButton").on("click", function(event){
     /* This function sets up `the click handlers for the create-dancer
@@ -16,33 +20,72 @@ $(document).ready(function(){
      * to the stage.
      */
     var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
-
-    // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
-
-    // make a dancer with a random position
 
     var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
-    window.dancers.push(dancer);
+    if(dancerMakerFunctionName === "MakeMarioDancer"){
+      window.marioDancers[window.counter] = dancer;
+    }
+    if(dancerMakerFunctionName === "MakeLuigiDancer"){
+      window.luigiDancers[window.counter] = dancer;
 
+    }
+    if(dancerMakerFunctionName === "MakeTextDancer"){
+      window.textDancers[window.counter] = dancer;
+    }
+    window.dancers[window.counter] = dancer;
+    dancer.$node.attr('id', window.counter);
+    window.counter++;
     $('body').append(dancer.$node);
-
+    $('.text').click(moveText);
 
   });
+//change
   var each = function(array, callback){
-    for (var i =0; i<array.length; i++){
-      callback(array[i]);
+    if (Array.isArray(array)){
+      for (var i =0; i<array.length; i++){
+        callback(array[i]);
+      }
+    }else{
+      for (var key in array){
+        callback(array[key]);
+      }
     }
-  }
+  };
+
+  //change
   $(".alignSprites").on("click", function(event){
     each(window.dancers, function(dancer){
       dancer.inline();
     });
   });
+
+
+  var moveText = function(event){
+    var id = $(this).attr('id');
+    var clickedText = window.textDancers[id];
+    var coordinates = clickedText.getPosition();
+    for (var key in window.textDancers){
+      if(key !== id){
+        var coordinates2 = window.textDancers[key].getPosition();
+        var x = coordinates2.top - coordinates.top;
+        var y = coordinates2.left - coordinates.left;
+        var zSquared = Math.pow(x,2) + Math.pow(y,2);
+        var z = Math.sqrt(zSquared);
+        if (z > .25*screen.width){
+          window.textDancers[key].setPosition(coordinates2.top-150,coordinates2.left-150);
+        }else{
+          window.textDancers[key].setPosition(coordinates2.top+150,coordinates2.left+150);
+        }
+      }
+    }
+  };
+
+  //on click text, grab id,
 });
 
 

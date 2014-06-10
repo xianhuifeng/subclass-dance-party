@@ -1,4 +1,5 @@
 var MakeMarioDancer = function(top, left, timeBetweenSteps){
+
   this.state = false;
   MakeDancer.call(this,top,left,timeBetweenSteps);
   this.$node.addClass('marioFace');
