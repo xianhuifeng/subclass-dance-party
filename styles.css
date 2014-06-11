@@ -93,3 +93,13 @@ body, a:link, a:visited, a:active{
   width: 60px;
 
 }
+
+.explode{
+  border: 1px solid green;
+  position:absolute;
+  background-image:url('img/exploded.png');
+  background-repeat:no-repeat;
+  height: 60px;
+  width: 39px;
+
+}

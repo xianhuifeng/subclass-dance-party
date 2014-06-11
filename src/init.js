@@ -42,6 +42,7 @@ $(document).ready(function(){
     window.counter++;
     $('body').append(dancer.$node);
     $('.text').click(moveText);
+    $('.mario').mouseover(hoverMario);
 
   });
 //change
@@ -63,7 +64,14 @@ $(document).ready(function(){
       dancer.inline();
     });
   });
-
+  var hoverMario = function(event){
+    var id = $(this).attr('id');
+    var clickedMario = window.marioDancers[id];
+    $(this).removeClass('marioFace marioBack');
+    clickedMario.explode();
+    var $sound = '<embed height="50" width="100" src="explodeSound.mp3">';
+    $('.sound').append($sound);
+  };
 
   var moveText = function(event){
     var id = $(this).attr('id');
@@ -77,9 +85,9 @@ $(document).ready(function(){
         var zSquared = Math.pow(x,2) + Math.pow(y,2);
         var z = Math.sqrt(zSquared);
         if (z > .25*screen.width){
-          window.textDancers[key].setPosition(coordinates2.top-150,coordinates2.left-150);
+          window.textDancers[key].setPosition(coordinates2.top-(.5*z),coordinates2.left-(.5*z));
         }else{
-          window.textDancers[key].setPosition(coordinates2.top+150,coordinates2.left+150);
+          window.textDancers[key].setPosition(coordinates2.top+(.5*z),coordinates2.left+(.5*z));
         }
       }
     }
@@ -87,6 +95,3 @@ $(document).ready(function(){
 
   //on click text, grab id,
 });
-
-
-
